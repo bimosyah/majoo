@@ -41,14 +41,10 @@
         </div>
     </div>
 
-    <footer class="bg-light text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            2019 © PT Majoo Teknologi Indonesia:
-            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">2019 @ PT Majoo Teknologi Indonesia.</span>
         </div>
-        <!-- Copyright -->
     </footer>
-
 
 <?php $this->load->view("include/footer"); ?>

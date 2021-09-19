@@ -5,21 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <?php if ($this->uri->segment(1) == "product" && $this->uri->segment(2) == "index"): ?>
-        <style>
-            .footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                background-color: #cccbcb;
-                color: white;
-                text-align: center;
-            }
-        </style>
-    <?php endif;?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #cccbcb;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,13 +31,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item <?php echo ($this->uri->segment(1)=="product" && $this->uri->segment(2)=="index" ? "active" : "") ;  ?>">
                 <a class="nav-link" href="<? echo site_url("product/index")?>">Product</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Master Product</a>
+            <li class="nav-item <?php echo ($this->uri->segment(1)=="product" && $this->uri->segment(2)=="master" ? "active" : "") ;  ?>">
+                <a class="nav-link" href="<? echo site_url("product/master")?>">Master Product</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item <?php echo ($this->uri->segment(1)=="category" && $this->uri->segment(2)=="index" ? "active" : "") ;  ?>">
                 <a class="nav-link" href="#">Master Category</a>
             </li>
         </ul>

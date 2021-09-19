@@ -53,24 +53,6 @@ class Product extends REST_Controller
         }
     }
 
-    public function index_get(){
-        $id = $this->uri->segment(4);
-        if ($id == ""){
-            $this->db->where("is_deleted",0);
-            $data = $this->db->get(self::TABLE)->result();
-            $this->response(array("status_code" => 200, "data" => $data),200);
-        }else{
-            $this->db->where('id',$id);
-            $this->db->where("is_deleted",0);
-            $data = $this->db->get(self::TABLE)->result();
-            if ($data){
-                $this->response(array("status_code" => 200, "data" => $data),200);
-            }else{
-                $this->response(array("status_code"=>502, "msg" => "id not found"),502);
-            }
-        }
-    }
-
     function upload_helper()
     {
         $image = time().'-'.$_FILES["image"]['name'];
