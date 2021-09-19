@@ -33,11 +33,15 @@ class Category extends CI_Controller {
             }
             $arr[$key] = $value;
         }
-        $update = $this->category->update($id,$arr);
-        if ($update){
-            echo json_encode(array('status' => "1", "msg" => "Tersimpan"));
+        if (!$this->category->isNameExist($arr['nama'])) {
+            $update = $this->category->update($id,$arr);
+            if ($update){
+                echo json_encode(array('status' => "1", "msg" => "Tersimpan"));
+            }else{
+                echo json_encode(array('status' => "0", "msg" => "Gagal Tersimpan"));
+            }
         }else{
-            echo json_encode(array('status' => "0", "msg" => "Gagal Tersimpan"));
+            echo json_encode(array('status' => "0", "msg" => "Nama Kategori Sudah Terdaftar"));
         }
     }
 
@@ -62,12 +66,17 @@ class Category extends CI_Controller {
             }
             $arr[$key] = $value;
         }
-        $insert = $this->category->insert($arr);
-        if ($insert){
-            echo json_encode(array('status' => "1", "msg" => "Tersimpan"));
+        if (!$this->category->isNameExist($arr['nama'])) {
+            $insert = $this->category->insert($arr);
+            if ($insert){
+                echo json_encode(array('status' => "1", "msg" => "Tersimpan"));
+            }else{
+                echo json_encode(array('status' => "0", "msg" => "Gagal Tersimpan"));
+            }
         }else{
-            echo json_encode(array('status' => "0", "msg" => "Gagal Tersimpan"));
+            echo json_encode(array('status' => "0", "msg" => "Nama Kategori Sudah Terdaftar"));
         }
+
     }
 
     public function get_list(){
