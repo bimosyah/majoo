@@ -53,4 +53,9 @@ $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['product/master/add'] = 'product/add';
+$route['category/master/add'] = 'category/add';
+
+$route['category/master/delete/(:num)'] = 'category/delete/$1';
+$route['category/master/update/(:num)'] = 'category/update/$1';
+$route['category/master/saveUpdate/(:num)'] = 'category/saveUpdate/$1';
 

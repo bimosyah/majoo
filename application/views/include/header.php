@@ -45,8 +45,8 @@
             <li class="nav-item <?php echo ($this->uri->segment(1)=="product" && $this->uri->segment(2)=="master" ? "active" : "") ;  ?>">
                 <a class="nav-link" href="<? echo site_url("product/master")?>">Master Product</a>
             </li>
-            <li class="nav-item <?php echo ($this->uri->segment(1)=="category" && $this->uri->segment(2)=="index" ? "active" : "") ;  ?>">
-                <a class="nav-link" href="#">Master Category</a>
+            <li class="nav-item <?php echo ($this->uri->segment(1)=="category" && $this->uri->segment(2)=="master" ? "active" : "") ;  ?>">
+                <a class="nav-link" href="<? echo site_url("category/master")?>">Master Category</a>
             </li>
         </ul>
     </div>
