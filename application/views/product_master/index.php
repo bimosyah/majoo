@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <br>
     <div class="float-right">
-        <button type="button" class="btn btn-primary btn-sm">New Product</button>
+        <a type="button" class="btn btn-primary btn-sm" href="<?=site_url('product/master/add')?>">New Product</a>
     </div>
     <br><br>
     <table id="master_product" class="display">
@@ -15,7 +15,6 @@
             <th>Harga</th>
             <th>Kategori</th>
             <th>Image</th>
-            <th>Action</th>
         </tr>
         </thead>
     </table>

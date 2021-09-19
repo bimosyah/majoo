@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Products_model extends CI_Model {
 
     var $table = 'tbl_produk';
-    var $column_order = array(null, 'tbl_produk.nama','deskripsi','id_kategori','harga','image'); //set column field database for datatable orderable
-    var $column_search = array('tbl_produk.nama','deskripsi','id_kategori','harga'); //set column field database for datatable searchable
+    var $column_order = array(null, 'tbl_produk.nama','deskripsi','kategori','harga','image'); //set column field database for datatable orderable
+    var $column_search = array('tbl_produk.nama','deskripsi','kategori','harga'); //set column field database for datatable searchable
     var $order = array('tbl_produk.id' => 'asc'); // default order
 
     public function __construct()
@@ -16,14 +16,8 @@ class Products_model extends CI_Model {
 
     private function _get_datatables_query()
     {
-        $this->db->select("tbl_produk.*");
-        $this->db->select("tbl_kategori.*");
-        $this->db->select("tbl_kategori.nama as nama_kategori");
-        $this->db->select("tbl_produk.nama as nama_produk");
-
         $this->db->from("tbl_produk");
 
-        $this->db->join("tbl_kategori",'tbl_produk.id_kategori = tbl_kategori.id');
         $i = 0;
 
         foreach ($this->column_search as $item) // loop column
@@ -80,5 +74,25 @@ class Products_model extends CI_Model {
         return $this->db->count_all_results();
     }
 
+    public function insert($arr){
+        $data = array(
+            'nama' => $arr['nama'],
+            'deskripsi' => $arr['deskripsi'],
+            'kategori' => $arr['kategori'],
+            'harga' => $arr['harga'],
+            'image' => $arr['image'],
+            'is_deleted' => "0"
+        );
+        return $this->db->insert($this->table,$data);
+    }
+
+    public function isNameExist($name){
+        $this->db->where('nama',$name);
+        $this->db->from($this->table);
+        if ($this->db->count_all_results() > 0){
+            return true;
+        }
+        return false;
+    }
 }
 ?>
