@@ -9,18 +9,20 @@ class Login extends CI_Controller {
 	}
 
     public function auth(){
-        $username = $this->post('username');
-        $password = $this->post('password');
+        header("Content-Type: application/json");
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
         if ($username == "" || $password == ""){
-            $this->response(array("status_code"=>502, "msg" => "username or password must filled"),502);
+            echo json_encode(array('status' => "0", "msg" => "Username or Password must Filled !"));
         }else{
             $this->db->where('username',$username);
             $this->db->where('password',md5($password));
-            $data = $this->db->get(self::TABLE)->result();
+            $data = $this->db->get("tbl_user")->result();
             if ($data){
-                $this->response(array("status_code"=>200, "data" => $data),200);
+                echo json_encode(array('status' => "1", "msg" => "Welcome.."));
             }else{
-                $this->response(array("status_code"=>502, "msg" => "username or password wrong!"),502);
+                echo json_encode(array('status' => "0", "msg" => "Wrong username or Password !"));
             }
         }
     }
