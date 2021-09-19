@@ -13,7 +13,8 @@ class Product extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('product_list/index');
+        $data['data'] = $this->product->get_list();
+        $this->load->view('product_list/index',$data);
     }
 
     public function master(){

@@ -94,5 +94,9 @@ class Products_model extends CI_Model {
         }
         return false;
     }
+
+    public function get_list(){
+        return $this->db->get($this->table)->result();
+    }
 }
 ?>
